@@ -8,9 +8,12 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
-  def mvn_version = 'M3'
+    tools {
+    maven 'M3'
+  }
+  
   withEnv(['AZURE_SUBSCRIPTION_ID=e731c36d-5d51-465d-996b-61c1d1bcec2b',
-        'AZURE_TENANT_ID=243bd71d-cef7-442d-b37f-3ff10a3e2832'], ["PATH+MAVEN=${tool mvn_version}/bin"]) {
+        'AZURE_TENANT_ID=243bd71d-cef7-442d-b37f-3ff10a3e2832'] {
     stage('init') {
       checkout scm
     }
