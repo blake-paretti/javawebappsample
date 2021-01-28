@@ -8,8 +8,8 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
-  withEnv(['AZURE_SUBSCRIPTION_ID=<subscription_id>',
-        'AZURE_TENANT_ID=<tenant_id>']) {
+  withEnv(['AZURE_SUBSCRIPTION_ID=e731c36d-5d51-465d-996b-61c1d1bcec2b',
+        'AZURE_TENANT_ID=243bd71d-cef7-442d-b37f-3ff10a3e2832']) {
     stage('init') {
       checkout scm
     }
@@ -22,7 +22,7 @@ node {
       def resourceGroup = '<resource_group>'
       def webAppName = '<app_name>'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: '<service_princial>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+      withCredentials([usernamePassword(credentialsId: 'AzureWebapp', passwordVariable: 'Bpa10252648!', usernameVariable: 'blake.paretti@perficient.com')]) {
        sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
