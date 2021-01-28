@@ -14,9 +14,7 @@ node {
       checkout scm
     }
   
-    stage('build') {
-      sh 'mvn clean package'
-    }
+
   
     stage('deploy') {
       def resourceGroup = '<resource_group>'
