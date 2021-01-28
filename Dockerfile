@@ -3,3 +3,12 @@ MAINTAINER <yourName>
 
 RUN rm -rf $CATALINA_HOME/webapps/ROOT
 COPY target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
+
+FROM maven
+COPY . /app/
+
+WORKDIR /app
+
+RUN mvn install
+
+ENTRYPOINT ["mvn", "verify"]
