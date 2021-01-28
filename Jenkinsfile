@@ -6,11 +6,6 @@ def getFtpPublishProfile(def publishProfilesJson) {
     if (p['publishMethod'] == 'FTP')
       return [url: p.publishUrl, username: p.userName, password: p.userPWD]
 }
-
-  tools {
-    maven 'M3'
-  }
-
 node {
   
   withEnv(['AZURE_SUBSCRIPTION_ID=e731c36d-5d51-465d-996b-61c1d1bcec2b',
