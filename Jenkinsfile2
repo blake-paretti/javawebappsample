@@ -6,8 +6,8 @@ def getAcrLoginServer(def acrSettingsJson) {
 }
 
 node {
- withEnv(['AZURE_SUBSCRIPTION_ID=<mySubscriptionId>',
-        'AZURE_TENANT_ID=<myTenantId>']) {
+ withEnv(['AZURE_SUBSCRIPTION_ID=e731c36d-5d51-465d-996b-61c1d1bcec2b',
+        'AZURE_TENANT_ID="243bd71d-cef7-442d-b37f-3ff10a3e2832']) {
     stage('init') {
       checkout scm
     }
@@ -17,13 +17,13 @@ node {
     }
   
     stage('deploy') {
-      def webAppResourceGroup = 'pcappservicelinuxrg'
-      def webAppName = '<resource_group>'
-      def acrName = '<app_name>'
-      def imageName = '<registry>'
+      def webAppResourceGroup = 'PipelinePracticeVM_group'
+      def webAppName = 'TestAzurePipeline'
+      def acrName = 'PipelineContainerRegistry'
+      def imageName = 'pcappservicelinuxrg'
       // generate version, it's important to remove the trailing new line in git describe output
       def version = sh script: 'git describe | tr -d "\n"', returnStdout: true
-      withCredentials([usernamePassword(credentialsId: '<service_principal>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+      withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: 'Bpa10252648!', usernameVariable: 'blake.paretti@perficient.com')]) {
         // login Azure
         sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
