@@ -7,7 +7,7 @@ def getFtpPublishProfile(def publishProfilesJson) {
       return [url: p.publishUrl, username: p.userName, password: p.userPWD]
 }
 node {
-  
+      agent any
       tools { 
         maven 'Maven 3.3.9' 
         jdk 'jdk8' 
