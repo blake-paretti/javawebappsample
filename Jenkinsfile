@@ -15,7 +15,7 @@ node {
     }
   
     stage('build') {
-      sh 'npm install'
+      sh 'mvn clean package'
     }
   
     stage('deploy') {
