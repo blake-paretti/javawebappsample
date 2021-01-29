@@ -13,6 +13,7 @@ node {
     }
   
     stage('build') {
+      sh 'apt install maven'
       sh 'mvn clean package'
     }
   
